@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# Alitu Interview Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome! Here's a simple and relatively bare React app where you can take some initiative to add some more features to the app.
 
-## Available Scripts
+Feel free to add any node modules and tools that help you get the job done.
 
-In the project directory, you can run:
+## Getting started
 
-### `yarn start`
+1. Fork this repo
+2. Clone it to your machine
+3. Run `yarn install`
+4. Run `yarn start`
+5. Get creating!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## [Mock Service Worker (msw)](https://mswjs.io/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This repo is frontend only and does not rely on any external servers. You can see where the data for api calls is mocked in the `handlers.ts` file.
 
-### `yarn test`
+If your work requires some more api calls/CRUD operations that are not included, feel free to add as many handlers as you like. You can find the documentation [here](https://mswjs.io/docs/getting-started/mocks/rest-api) for mocking REST api calls.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tests
 
-### `yarn build`
+This repository currently includes one test using Jest and React Testing Library. These tests also rely on the MSW (Mock
+Service Worker). You can see the setup for the service worker in the `setupTests.ts` file.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run `yarn test` to run them. Extra points for including more tests in your work!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## TypeScript
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you are unfamiliar with TypeScript, you're welcome to change the file extension to `.js` and remove any TS code.
 
-### `yarn eject`
+## [Chakra UI](https://chakra-ui.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+We have included this package to help save you time. There are a lot of great components in there, so you don't have to spend much time with custom buttons/modals/inputs etc.
