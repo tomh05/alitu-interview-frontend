@@ -4,6 +4,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { worker } from './mocks/browser';
+
+// start the mock service worker
+// this is where the api is mocked and requests intercepted
+worker.start()
 
 ReactDOM.render(
   <React.StrictMode>
