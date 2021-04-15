@@ -1,7 +1,10 @@
+import Page from "../components/page/Page";
+import PageTitle from "../components/page/PageTitle";
+
 export default function Library() {
   return (
-    <section>
-      <h1>Library</h1>
-    </section>
+    <Page>
+      <PageTitle>Library</PageTitle>
+    </Page>
   )
 }
