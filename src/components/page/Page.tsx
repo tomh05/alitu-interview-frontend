@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/layout"
 import { ReactElement } from "react"
 
 interface PageProps {
-  children: ReactElement | ReactElement[]
+  children: (ReactElement | null) | (ReactElement | null)[]
 }
 
 export default function Page({ children }: PageProps) {
