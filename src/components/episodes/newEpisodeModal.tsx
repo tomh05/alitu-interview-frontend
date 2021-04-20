@@ -31,11 +31,13 @@ export default function NewEpisodeModal({ isOpen, onCancel, onCreated }: NewEpis
   const { post, response } = useFetch(`http://localhost:3000/api/episode/new`, {}, [])
 
   const onCreate = async () => {
-    if (!isInvalid) {
+    if (name !== '') {
       await post({ name, description })
       if (response.ok) {
         onCreated()
       }
+    } else {
+      setIsInvalid(true)
     }
   }
 
