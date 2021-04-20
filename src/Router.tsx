@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Episodes from './pages/Episodes';
-import Library from './pages/Library';
+import { ReactElement } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Episodes from './pages/Episodes'
+import Library from './pages/Library'
 
 interface RouterProps {
   children: ReactElement | ReactElement[]

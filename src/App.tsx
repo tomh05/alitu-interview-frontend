@@ -1,6 +1,6 @@
-import './App.css';
-import Nav from './components/nav/Nav';
-import Router from './Router';
+import './App.css'
+import Nav from './components/nav/Nav'
+import Router from './Router'
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <Nav />
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

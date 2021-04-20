@@ -1,5 +1,5 @@
-import Page from "../components/page/Page";
-import PageTitle from "../components/page/PageTitle";
+import Page from '../components/page/Page'
+import PageTitle from '../components/page/PageTitle'
 
 export default function Library() {
   return (

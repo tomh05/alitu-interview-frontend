@@ -1,5 +1,5 @@
-import { Flex } from "@chakra-ui/layout"
-import { ReactElement } from "react"
+import { Flex } from '@chakra-ui/layout'
+import { ReactElement } from 'react'
 
 interface PageProps {
   children: (ReactElement | null) | (ReactElement | null)[]

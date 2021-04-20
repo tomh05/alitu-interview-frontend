@@ -1,6 +1,6 @@
-import { Box, ListItem, UnorderedList } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import AlituLogo from './AlituLogo';
+import { Box, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
+import AlituLogo from './AlituLogo'
 
 export default function Header() {
   return (
