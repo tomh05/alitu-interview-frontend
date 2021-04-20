@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Episodes from './pages/Episodes'
+import Episode from './pages/Episode'
 import Library from './pages/Library'
 
 interface RouterProps {
@@ -14,6 +15,9 @@ export default function Router({ children }: RouterProps) {
       <Switch>
         <Route path="/episodes">
           <Episodes />
+        </Route>
+        <Route path="/episode/:id">
+          <Episode />
         </Route>
         <Route path="/library">
           <Library />

@@ -1,14 +1,36 @@
 import { AddIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Flex, Grid } from '@chakra-ui/layout'
-import { Button, Text } from '@chakra-ui/react'
+import { Button, Text, useDisclosure } from '@chakra-ui/react'
 import { Spinner } from '@chakra-ui/spinner'
+import { useHistory } from 'react-router-dom'
 import { Episode as EpisodeType } from '../../types'
+import NewEpisodeModal from '../components/episodes/newEpisodeModal'
 import Page from '../components/page/Page'
 import PageTitle from '../components/page/PageTitle'
-import useFetch from '../hooks/useFetch'
+import useFetch from 'use-http'
+import { useEffect, useState } from 'react'
 
 export default function Episodes() {
-  const { response: episodes, isLoading } = useFetch<EpisodeType[]>('http://localhost:3000/api/episodes')
+  const [episodes, setEpisodes] = useState<EpisodeType[]>([])
+  const { loading, get, cache, response } = useFetch('http://localhost:3000/api/episodes', {})
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  async function loadEpisodes() {
+    cache.clear()
+    const fetchedEpisodes = await get(`/`)
+    if (response.ok && Array.isArray(fetchedEpisodes)) {
+      setEpisodes(fetchedEpisodes)
+    }
+  }
+
+  useEffect(() => {
+    loadEpisodes()
+  }, [])
+
+  const onEpisodeCreated = async () => {
+    onClose()
+    loadEpisodes()
+  }
 
   return (
     <Page>
@@ -19,13 +41,15 @@ export default function Episodes() {
         bg="green.300"
         _hover={{ bg: 'green.200' }}
         rightIcon={<AddIcon w={3.5} h={3.5} />}
+        onClick={onOpen}
       >
         Add new episode
       </Button>
-      {isLoading === true ? <Spinner alignSelf="center" size="xl" /> : null}
+      <NewEpisodeModal isOpen={isOpen} onCancel={onClose} onCreated={onEpisodeCreated} />
+      {loading === true ? <Spinner alignSelf="center" size="xl" /> : null}
       <Grid templateColumns="1fr 1fr" gap={10}>
-        {episodes?.map((episode) => (
-          <Episode episode={episode} key={episode.id} />
+        {episodes.map((episode) => (
+          <EpisodePreview episode={episode} key={episode.id} />
         ))}
       </Grid>
     </Page>
@@ -36,7 +60,9 @@ interface EpisodeProps {
   episode: EpisodeType
 }
 
-function Episode({ episode }: EpisodeProps) {
+function EpisodePreview({ episode }: EpisodeProps) {
+  const history = useHistory()
+
   return (
     <Flex justifyContent="space-between" alignItems="center" bg="gray.200" p="25px 40px" rounded={4} maxWidth="100%">
       <Flex direction="column">
@@ -47,7 +73,13 @@ function Episode({ episode }: EpisodeProps) {
           {episode.description}
         </Text>
       </Flex>
-      <Button bg="purple.300" color="white" _hover={{ bg: 'purple.200' }} rightIcon={<ChevronRightIcon w={6} h={6} />}>
+      <Button
+        bg="purple.300"
+        color="white"
+        _hover={{ bg: 'purple.200' }}
+        rightIcon={<ChevronRightIcon w={6} h={6} />}
+        onClick={() => history.push(`/episode/${episode?.id}`)}
+      >
         Go to episode
       </Button>
     </Flex>
